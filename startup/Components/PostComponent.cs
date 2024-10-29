@@ -20,6 +20,6 @@ namespace startup.Components
                               orderby p.PostID descending
                               select p).Take(3).ToList();
             return await Task.FromResult((IViewComponentResult)View("Default", listofPost));
-        }
+        } 
     }
 }
