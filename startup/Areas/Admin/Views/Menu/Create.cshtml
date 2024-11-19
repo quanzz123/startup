@@ -1,0 +1,105 @@
+﻿@model startup.Models.Menu
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+ 
+<main id="main" class=" main">
+    <div class="pagetitle">
+        <h1>Xác nhận thêm menu</h1>
+      
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Thêm mới menu</h5>
+
+              <!-- General Form Elements -->
+              <form method="post">
+                <div asp-validation-summary="All"></div>
+                <div class="row mb-3">
+                  <label asp-for="MenuName" class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-10">
+                    <input asp-for="MenuName" placeholder="Nhập tên menu" type="text" class="form-control">
+                  </div>
+                  <span asp-validation-for="MenuName" class="alert-danger"></span>
+                </div>
+                
+                <div class="row mb-3">
+                  <label asp-for="levels" class="col-sm-2 col-form-label">levels</label>
+                  <div class="col-sm-10">
+                    <select asp-for="levels" class="form-select" aria-label="Default select example">
+                      <option selected>Open this select menu</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      
+                    </select>
+                  </div>
+                </div>
+
+                 <div class="row mb-3">
+                  <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                  <label asp-for="ParentID" class="col-sm-2 col-form-label">ParentID</label>
+                  <select class="form-select"  asp-items="@(new SelectList(ViewBag.mnList, "Value", "Text"))" >
+                      @* <option selected>Open this select menu</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option> *@
+                      
+                    </select>
+                </div>
+                @* link *@
+                <div class="row mb-3">
+                  <label asp-for="Link" class="col-sm-2 col-form-label">Link</label>
+                  <div class="col-sm-10">
+                    <input asp-for="Link" placeholder="Nhập Link" type="text" class="form-control">
+                  </div>
+                  <span asp-validation-for="Link" class="alert-danger"></span>
+                </div>
+                @* menuorder *@
+                <div class="row mb-3">
+                  <label asp-for="MenOrder" class="col-sm-2 col-form-label">MenuOrder</label>
+                  <div class="col-sm-10">
+                    <input asp-for="MenOrder" placeholder="Enter MenuOrer" type="text" class="form-control">
+                  </div>
+                  <span asp-validation-for="MenOrder" class="alert-danger"></span>
+                </div>
+                @* Position *@
+                <div class="row mb-3">
+                  <label asp-for="Position" class="col-sm-2 col-form-label">Position</label>
+                  <div class="col-sm-10">
+                    <input asp-for="Position" placeholder="Enter Position" type="text" class="form-control">
+                  </div>
+                  <span asp-validation-for="Position" class="alert-danger"></span>
+                </div>
+                @* IsActive *@
+                <div class="row mb-3">
+                  <label>
+                      @Html.CheckBox("IsActive", false)
+                      Hiển thị
+                  </label>
+                </div>
+                @* Submit *@
+                <div class="row mb-3">
+                  
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Thêm menu</button>
+                    <button asp-controller="Menu" asp-action="Index" class="btn btn-warning">Quay lại</button>
+                    
+                  </div>
+                  
+                </div>
+
+              </form><!-- End General Form Elements -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+    </section>
+</main>

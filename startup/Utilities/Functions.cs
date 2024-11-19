@@ -9,5 +9,10 @@ namespace startup.Utilities
             string sTitle = type + "-" + SlugGenerator.SlugGenerator.GenerateSlug(title) + "-" + id.ToString() + ".html";
             return sTitle;
         }
+
+        public static string getCurentDate()
+        {
+            return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
     }
 }
