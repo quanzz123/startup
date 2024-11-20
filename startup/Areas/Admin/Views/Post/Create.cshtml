@@ -30,7 +30,7 @@
                                 <label asp-for="MenuID" class="col-sm-2 col-form-label">Chọn mục</label>
                                 <div class="col-sm-10">
 
-                                <select class="form-select" asp-items="@(new SelectList(ViewBag.mnList, "Value", "Text"))">
+                                    <select asp-for="@Model.MenuID"  class="form-select" asp-items="@(new SelectList(ViewBag.mnList, "Value", "Text"))">
                                     
                                 </select>
                                 </div>
@@ -62,7 +62,15 @@
                                     <input class="form-control" type="text" asp-for="Images" id="file_input" aria-describedby="button-addon2">
                                 </div>
                             </div>
-
+                            @* content *@
+                            <div class="row mb-3">
+                                <label asp-for="Contents" class="col-sm-2 col-form-label">Nôi dung</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Contents"  type="text" class="form-control">
+                                    @* <textarea ></textarea> *@
+                                </div>
+                                <span asp-validation-for="Abstract" class="alert-danger"></span>
+                            </div>
                             @* IsActive *@
                             <div class="row mb-3">
                                 <label>
@@ -95,8 +103,8 @@
                             <div class="row mb-3">
 
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Lưu lại</button>
-                                    <button href="javascript:history.back()" class="btn btn-warning">Quay lại</button>
+                                    <button  type="submit" class="btn btn-primary">Lưu lại</button>
+                                    <button asp-controller="Menu" asp-action="Index" class="btn btn-warning">Quay lại</button>
 
                                 </div>
 
@@ -112,3 +120,7 @@
 
     </section>
 </main>
+@{
+    var summernote = new startup.Areas.Admin.Models.SummerNote("#Contents");
+    <partial name="_SummerNote" model="summernote"/>
+}
