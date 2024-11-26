@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using startup.Utilities;
 
 namespace startup.Areas.Admin.Controllers
 {
@@ -8,6 +9,11 @@ namespace startup.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            //kiểm tra trạng thái đăng nhập
+            if (!Functions.IsLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
     }
